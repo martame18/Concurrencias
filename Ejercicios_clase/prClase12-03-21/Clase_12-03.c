@@ -57,9 +57,17 @@ int extraerLista(Lista *l, int elem){ //elimina de la lista el elemento elem. De
         act = act->sig;
     }
     if (act ==NULL) return 0;
-    // ME FALTA ESTO - RELLENAR
-
-    return 0;
+    else if(act->elem!=elem) return 0;
+    else{
+        if (ant == NULL){
+            *l = act->sig;
+            free(act);
+        } else{
+            ant->sig = act->sig--m
+        }
+        free(act);
+        return 1;
+    }
 }
 
 int borrarLista(Lista *l){ //elimina todos los nodos de la lista y la deja vacía
