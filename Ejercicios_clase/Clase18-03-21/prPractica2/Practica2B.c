@@ -56,9 +56,17 @@ void muestrafichero(char* nfichero){
  * Guarda en el arbol "*miarbol" los números almacenados en el fichero binario "nfichero"
  */
 
-void cargaFichero(char* nfichero, T_Arbol* miarbol)
-{
+void cargaFichero(char* nfichero, T_Arbol* miarbol){
+	FILE *f = fopen(nfichero, "rb");
+	if(f == NULL) perror("No se ha podido abrir");
+	else{
+		unsigned n;
 
+		while (fread(&n,sizeof(unsigned),1,f)==1){
+			Insertar(miarbol, n);
+		}
+		fclose();
+	}
 }
 
 int main(void) {

@@ -70,6 +70,12 @@ typedef struct T_Nodo* T_Arbol;
 	}
 
 	// Guarda en disco el contenido del arbol
-	void Salvar(T_Arbol arbol, FILE* fichero);
+	void Salvar(T_Arbol arbol, FILE* fichero){
+		if (arbol != NULL){
+			Salvar(arbol->izq, fichero);
+			fwrite(&arbol->dato, sizeof(unsigned), 1, fichero);
+			Salvar(arbol->der, fichero);
+		}
+	}
 
 #endif /* ARBOLBB_H_ */
