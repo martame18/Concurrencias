@@ -20,18 +20,36 @@
  * Se utiliza srand(time(NULL)) para establecer la semilla (de la libreria time.h)
  * y rand()%100 para crear un número aleatorio entre 0 y 99.
  */
-void creafichero(char* nfichero)
-{
-
-
+void creafichero(char* nfichero){
+	FILE *f = fopen(nfichero, "wb");
+	unsigned tam, n;
+	if (f == NULL) perror("No se ha podido abrir el fichero");
+	else{
+		printf("Introduce el tamaño: \n");
+		fflush(stdout);
+		scanf("%u", &tam);
+		srand(time(NULL));
+		for (int i=0; i<tam; i++){
+			n = rand()%100;
+			fwrite(&n, sizeof(unsigned),i,f);
+		}
+		fclose(f);
+	}
 }
+
 /**
  * Muestra por pantalla la lista de números (unsigned int) almacenada
  * en el fichero binario "nfichero"
  */
-void muestrafichero(char* nfichero)
-{
-
+void muestrafichero(char* nfichero){
+	FILE *f = fopen(nfichero, "rb");
+	unsigned i = 0, n;
+	if (f == NULL) perror("No se ha podido abrir el fichero");
+	else{
+		while(fread(&n, sizeof(unsigned), 1, f) == 1);
+		i++;
+	}
+	fclose(f);
 }
 
 /**
