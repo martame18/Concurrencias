@@ -3,6 +3,7 @@
 *
 * Ejercicios para hacer en casa del 06-03-2021
 */
+//--------------------------------------------------------------------------------------------------------
 
 // Ejercicio 1
 
@@ -68,9 +69,12 @@ int check(char *ptr, char *c){
 // Ejercicio 9
 
 void elimina(char c, char *cadena){
-    while (cadena!= 0){
-        if (*cadena == 0){
-            *cadena += 1;
+    char aux = cadena;
+    while (aux!= 0){
+        if (aux == c){
+            *aux += 1;
         }
+        aux ++;
     }
+    *cadena = *aux;
 }
