@@ -5,8 +5,9 @@
  *      Author: Marta Maleno Escudero
  */
 
-#ifndef _GESTION_MEMORIA_
-#define _GESTION_MEMORIA_
+#include "gestion_memoria.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef struct T_Nodo* T_Manejador;
 
@@ -26,7 +27,15 @@ const int MAX = 1000;
 	}
 
 /* Destruye la estructura utilizada (libera todos los nodos de la lista. El parámetro manejador debe terminar apuntando a NULL */
-	void destruir(T_Manejador* manejador);
+	void destruir(T_Manejador* manejador){
+		T_Manejador act = *manejador;
+		while (act){
+			act->inicio = NULL;
+			act->fin = NULL;
+			act = act->sig;
+		}
+		act->sig = NULL;
+	}
 
 /* Devuelve en “dir” la dirección de memoria “simulada” (unsigned) donde comienza el trozo de memoria continua de tamaño “tam” solicitada.
 Si la operación se pudo llevar a cabo, es decir, existe un trozo con capacidad suficiente, devolvera TRUE (1) en “ok”; FALSE (0) en otro caso.
