@@ -40,7 +40,31 @@ const int MAX = 1000;
 /* Devuelve en “dir” la dirección de memoria “simulada” (unsigned) donde comienza el trozo de memoria continua de tamaño “tam” solicitada.
 Si la operación se pudo llevar a cabo, es decir, existe un trozo con capacidad suficiente, devolvera TRUE (1) en “ok”; FALSE (0) en otro caso.
  */
-	void obtener(T_Manejador *manejador, unsigned tam, unsigned* dir, unsigned* ok);
+	void obtener(T_Manejador *manejador, unsigned tam, unsigned* dir, unsigned* ok){
+		T_Manejador ant = NULL, act=*manejador;
+		int enc = 0;
+		while (act!=NULL && !enc){
+			if (act->fin-act->inicio+1 >= tam) enc = 1;
+			else{
+				ant = act;
+				act = act->sig;
+			}
+		}
+		*ok = enc;
+		if (enc){
+			*dir = act->inicio;
+			act->inicio = act->inicio+tam;
+			if (act->inicio > act->fin){
+				//hay que eliminar el nodo
+				if (ant == NULL){
+					*manejador = act->sig;
+				} else{
+					ant->sig = act->sig;
+				}
+				free(act);
+			}
+		}
+	}
 
 /* Muestra el estado actual de la memoria, bloques de memoria libre */
 	void mostrar (T_Manejador manejador);
