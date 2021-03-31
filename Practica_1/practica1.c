@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : Practica1.c
- Author      : 
+ Author      : Marta Maleno Escudero
  Version     :
  Copyright   : Your copyright notice
  Description :
