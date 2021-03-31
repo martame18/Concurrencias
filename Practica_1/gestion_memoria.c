@@ -67,7 +67,12 @@ Si la operación se pudo llevar a cabo, es decir, existe un trozo con capacidad s
 	}
 
 /* Muestra el estado actual de la memoria, bloques de memoria libre */
-	void mostrar (T_Manejador manejador);
+	void mostrar (T_Manejador manejador){
+		while(manejador!=NULL){
+			printf("Bloque: [%d,%d]\n", manejador->inicio,manejador->fin);
+			manejador = manejador->sig;
+		}
+	}
 
 /* Devuelve el trozo de memoria continua de tamaño “tam” y que
  * comienza en “dir”.
