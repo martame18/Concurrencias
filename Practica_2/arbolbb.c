@@ -32,9 +32,29 @@ typedef struct T_Nodo* T_Arbol;
 	}
 
 	// Inserta num en el arbol
-	void Insertar(T_Arbol* arbol,unsigned num);
+	void Insertar(T_Arbol* arbol,unsigned num){
+		;
+	}
+
+	int Buscar(T_Arbol* arbol, unsigned num){
+		// si lo encuentra devuelve 1, si no lo encuentra 0
+		if(&(*arbol)->dato == num){
+			return 1;
+		}else{
+			Buscar((&(*arbol)->izq), num);
+			Buscar((&(*arbol)->der), num);
+		}
+		return 0;
+	}
+
 	// Muestra el contenido del árbol en InOrden
-	void Mostrar(T_Arbol arbol);
+	void Mostrar(T_Arbol arbol){
+		if(arbol != NULL){
+			Mostrar(arbol->izq);
+			printf("%u\n", arbol->dato);
+			Mostrar(arbol->der);
+		}
+	}
 	// Guarda en disco el contenido del arbol
 	void Salvar(T_Arbol arbol, FILE* fichero);
 
