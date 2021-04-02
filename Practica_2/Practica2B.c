@@ -34,7 +34,15 @@ void creafichero(char* nfichero){
  * en el fichero binario "nfichero"
  */
 void muestrafichero(char* nfichero){
-;
+	FILE *ptr = fopen(nfichero, "r");
+	if (ptr == NULL) perror("no se ha podido abrir el fichero");
+	else{
+		char cadena[50];
+		while(fscanf(ptr, "%s", cadena)==1){
+			printf("%s", cadena);
+		}
+		fclose(ptr);
+	}
 }
 
 /**
