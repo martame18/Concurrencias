@@ -78,7 +78,9 @@ Si la operación se pudo llevar a cabo, es decir, existe un trozo con capacidad s
  * comienza en “dir”.
  * Se puede suponer que se trata de un trozo obtenido previamente.
  */
-	void devolver(T_Manejador *manejador,unsigned tam,unsigned dir);
+	void devolver(T_Manejador *manejador,unsigned tam,unsigned dir){
+		T_Manejador act = *manejador;
+		act->inicio = act->inicio-tam;
+	}
 
-#endif
 
