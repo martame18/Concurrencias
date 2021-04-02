@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : Practica2B.c
- Author      : esc
+ Author      : Marta Maleno Escudero
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "arbolbb.h"
+#include "arbolbb.c"
 
 /**
  * Pide un número "tam" al usuario, y
@@ -20,18 +21,20 @@
  * Se utiliza srand(time(NULL)) para establecer la semilla (de la libreria time.h)
  * y rand()%100 para crear un número aleatorio entre 0 y 99.
  */
-void creafichero(char* nfichero)
-{
-
-
+void creafichero(char* nfichero){
+	FILE *ptr = fopen(nfichero, "w");
+	if (ptr == NULL) perror("no se ha podido abrir el fichero");
+	else{
+		fprintf(ptr, "He creado el fichero");
+		fclose(ptr);
+	}
 }
 /**
  * Muestra por pantalla la lista de números (unsigned int) almacenada
  * en el fichero binario "nfichero"
  */
-void muestrafichero(char* nfichero)
-{
-
+void muestrafichero(char* nfichero){
+;
 }
 
 /**
