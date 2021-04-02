@@ -1,12 +1,11 @@
 /*
- * arbolbb.h
+ * arbolbb.c
  *
- *  Created on: 4/4/2016
- *      Author: Marta Maleno Escudero
+ *  Created on: 2021 Apr 2
+ *      Author: marta
  */
 
-#ifndef ARBOLBB_H_
-#define ARBOLBB_H_
+
 #include <stdio.h>
 
 typedef struct T_Nodo* T_Arbol;
@@ -17,10 +16,20 @@ typedef struct T_Nodo* T_Arbol;
 		};
 
 // Crea la estructura utilizada para gestionar la memoria disponible.
-	void Crear(T_Arbol* arbol);
+	void Crear(T_Arbol* arbol){
+		*arbol = NULL;
+	}
 
 // Destruye la estructura utilizada.
-	void Destruir(T_Arbol* arbol);
+	void Destruir(T_Arbol* arbol){
+		if (*arbol != NULL){
+			&(*arbol)->dato = NULL;
+			Destruir( &(*arbol)->izq );
+			Destruir( &(*arbol)->izq );
+			free(*arbol);
+			*arbol = NULL;
+		}
+	}
 
 	// Inserta num en el arbol
 	void Insertar(T_Arbol* arbol,unsigned num);
@@ -29,4 +38,6 @@ typedef struct T_Nodo* T_Arbol;
 	// Guarda en disco el contenido del arbol
 	void Salvar(T_Arbol arbol, FILE* fichero);
 
-#endif /* ARBOLBB_H_ */
+
+
+
