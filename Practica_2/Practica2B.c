@@ -22,10 +22,30 @@
  * y rand()%100 para crear un número aleatorio entre 0 y 99.
  */
 void creafichero(char* nfichero){
+
+	// ***FICHERO BINARIO***
+	// escribir => fwrite(a,b,c,d)
+	//    a : zona de la memoria principal de donde se va a copiar
+	//    b : tamaño de los bloques que vamos a copiar (bytes) -> sizeof(a)
+	//    c : cantidad de bloques a copiar
+	//    d : nombre del fichero
+
+	unsigned int tam;
 	FILE *ptr = fopen(nfichero, "w");
 	if (ptr == NULL) perror("no se ha podido abrir el fichero");
 	else{
-		fprintf(ptr, "He creado el fichero");
+		printf("Cuantos numeros quieres crear?\n");
+		fflush(stdout);
+		scanf("%u", tam);   // tam = cantidad de números aleatorios a generar
+		fflush(stdin);
+
+		srand(time(NULL));
+		int i, al;             // i = auxiliar para el for
+		for (i = 0; i<tam; i++){
+			al = rand()%100;   // al = variable para los aleatorios
+			fwrite(&al, sizeof(int), 1, ptr);
+		}
+
 		fclose(ptr);
 	}
 }
