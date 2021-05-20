@@ -31,7 +31,7 @@ void creafichero(char* nfichero){
 	//    d : nombre del fichero
 
 	unsigned int tam;
-	FILE *ptr = fopen(nfichero, "w");
+	FILE *ptr = fopen(nfichero, "wb");
 	if (ptr == NULL) perror("no se ha podido abrir el fichero");
 	else{
 		printf("Cuantos numeros quieres crear?\n");
@@ -54,15 +54,12 @@ void creafichero(char* nfichero){
  * en el fichero binario "nfichero"
  */
 void muestrafichero(char* nfichero){
-	FILE *ptr = fopen(nfichero, "r");
+	FILE *ptr = fopen(nfichero, "rb");
 	if (ptr == NULL) perror("no se ha podido abrir el fichero");
 	else{
-		char cadena[50];
-		while(fscanf(ptr, "%s", cadena)==1){
-			printf("%s", cadena);
-		}
-		fclose(ptr);
+		while (fread (&nfichero, sizeof(unsigned int), 1, ptr) ==1);
 	}
+	fclose(ptr);
 }
 
 /**
