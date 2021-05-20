@@ -4,7 +4,7 @@ package filosofos;
 
 public class Tenedor {
 	private int idt;
-
+	private boolean libre = true;
 	
 	
 	public Tenedor(int idt){
@@ -12,14 +12,16 @@ public class Tenedor {
 	}
 	
 	public synchronized void cogerTenedor(int id) throws InterruptedException{
-		
+		while(!libre) wait();    //preprotocolo
+		libre = false;
 		System.out.println("El filosofo "+id+" tiene el tenedor "+idt);
 	}
 	
 	public synchronized void soltarTenedor(int id){
 		
-		System.out.println("El filosofo "+id+" suelta el tenedor "+idt);
-
+		System.out.println("     El filosofo "+id+" suelta el tenedor "+idt);
+		libre = true;
+		notify();
 	}
 
 }
