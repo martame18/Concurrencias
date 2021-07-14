@@ -1,8 +1,8 @@
 /*
  * gestion_memoria.h
  *
- *  Created on: dd/mm/aaaa
- *  Author: name
+ *  Created on: 14/07/2021
+ *  Author: martame
  */
 
 #ifndef _GESTION_MEMORIA_
@@ -16,8 +16,14 @@ struct T_Nodo {
 	T_Manejador sig;
 };
 
+const int MAX = 1000;
+
 /* Crea la estructura utilizada para gestionar la memoria disponible. Inicialmente, sólo un nodo desde 0 a MAX */
-	void crear(T_Manejador* manejador);
+	void crear(T_Manejador* manejador){
+		manejador->inicio = 0;
+		manejador->fin = MAX-1;
+		manejador->sig = null;
+	}
 
 /* Destruye la estructura utilizada (libera todos los nodos de la lista. El parámetro manejador debe terminar apuntando a NULL */
 	void destruir(T_Manejador* manejador);

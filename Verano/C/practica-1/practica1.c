@@ -1,8 +1,8 @@
 /*
  ============================================================================
  Name        : Practica1.c
- Author      : 
- Version     :
+ Author      : martame
+ Version     : 0.1
  Copyright   : Your copyright notice
  Description :
  ============================================================================
