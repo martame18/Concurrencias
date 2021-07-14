@@ -1,0 +1,81 @@
+1. Dadas las definiciones:
+
+   int t[30];
+
+   int *p;
+
+¿Cuál de las dos instrucciones siguientes es incorrecta?  ¿Por que?
+
+  t = p;
+
+  p = t;
+
+
+
+2. ¿Tiene sentido que una instrucción del tipo &var (var es una variable) aparezca a la izquierda de una asignación?
+
+
+
+3. Si ptr es un puntero a un entero (int *ptr), ¿de qué tipo es &ptr?
+
+
+
+4. ¿Qué imprime el siguiente código?
+
+   char c1 = 'P';
+
+   char c2 = 'Q';
+
+   char *p,*q;
+
+   p = &c1;
+
+   q = &c2;
+
+   *p = *q;
+
+   printf("%c",c1)
+
+5. ¿Es correcto el siguiente código? En caso positivo, ¿qué valor se imprime?
+
+   float f[3];
+
+   float *ptr;
+
+   f[0] = 1.0;
+
+   f[1] = 2.0;
+
+   f[2] = 3.0;
+
+   ptr = f;
+
+   printf("%f",*ptr);
+
+
+
+6. Escribe instrucciones C que sucesivamente realicen las siguientes operaciones:
+
+- Define e inicializa un puntero a char (str) con la dirección del primer carácter de la cadena "Empezamos una y otra vez"
+
+- Define un puntero a carácter (ptr)
+
+- Define un array con 28 caracteres
+
+- Copia la dirección de la cadena "Empezamos una y otra vez" en ptr
+
+- Copia la cadena "Empezamos una y otra vez" en a
+
+- Copia la dirección de la primera componente de a en str
+
+
+
+7. Escribe una función void cambiaSigno(int *ptr) que cambie de signo la variable referenciada por ptr
+
+
+
+8. Escribe una función int check(char *ptr,char *c) que devuelve 1 si ptr tiene la dirección de la variable referenciada por c, y 0, en otro caso.
+
+
+
+9. Implementa una función void elimina(char c,char *cadena) que elimina de la cadena de caracteres 'cadena' todas las apariciones del carácter 'c'.
