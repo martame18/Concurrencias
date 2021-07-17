@@ -21,12 +21,20 @@ const int MAX = 1000;
 /* Crea la estructura utilizada para gestionar la memoria disponible. Inicialmente, sólo un nodo desde 0 a MAX */
 	void crear(T_Manejador* manejador){
 		manejador->inicio = 0;
-		manejador->fin = MAX-1;
-		manejador->sig = null;
+		manejador->fin = MAX;
+		manejador->sig = NULL;
 	}
 
 /* Destruye la estructura utilizada (libera todos los nodos de la lista. El parámetro manejador debe terminar apuntando a NULL */
-	void destruir(T_Manejador* manejador);
+	void destruir(T_Manejador* manejador){
+		manejador->inicio = NULL;
+		manejador->fin = NULL;
+		while (manejador->sig != NULL){
+			destruir(&(manejador->sig));
+			manejador->sig = NULL;
+		}
+		manejador = NULL;
+	}
 
 /* Devuelve en “dir” la dirección de memoria “simulada” (unsigned) donde comienza el trozo de memoria continua de tamaño “tam” solicitada.
 Si la operación se pudo llevar a cabo, es decir, existe un trozo con capacidad suficiente, devolvera TRUE (1) en “ok”; FALSE (0) en otro caso.
